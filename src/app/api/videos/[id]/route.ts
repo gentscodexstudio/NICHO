@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { XMLParser } from "fast-xml-parser";
 
 // Helper function to format the transcript
@@ -7,8 +7,8 @@ const formatTranscript = (transcript: any[]) => {
 };
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const apiKey = process.env.YOUTUBE_API_KEY;
 
@@ -19,7 +19,7 @@ export async function GET(
     );
   }
 
-  const id = params.id;
+  const { id } = await params;
 
   try {
     // 1. Fetch Video Details
