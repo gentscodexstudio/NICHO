@@ -16,7 +16,7 @@ const VideoCard = ({ video, onVideoSelect }: { video: any; onVideoSelect: (video
     <img src={video.thumbnail} alt={video.title} className="w-full h-48 object-cover" />
     <div className="p-4">
       <h3 className="text-lg font-semibold text-gray-900 mb-2">{video.title}</h3>
-      <p className="text-gray-600">{video.channel}</p>
+      <p className="text-gray-600">{video.channelName}</p>
       <p className="text-gray-500 text-sm mt-1">{video.views} views</p>
     </div>
   </div>
