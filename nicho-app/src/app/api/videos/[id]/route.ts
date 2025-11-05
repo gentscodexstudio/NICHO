@@ -5,14 +5,15 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const id = params.id;
-  try {
-    const res = await fetch(`http://localhost:3001/videos/${id}`);
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to fetch video analysis" },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json({
+    summary: `This is a summary for video ${id}.`,
+    transcript: `This is a transcript for video ${id}.`,
+    keyInsights: [
+      "Faceless channels are growing 2x faster than traditional channels.",
+      "AI tools can automate 80% of the content creation process.",
+      "The average RPM for faceless channels is $12.",
+    ],
+    sentiment: "Positive",
+    keywords: ["faceless youtube", "ai content creation", "youtube automation"],
+  });
 }
